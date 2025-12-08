@@ -102,7 +102,7 @@
 
                 <div class="col-md-6 mb-3" id="divisionGroup">
                     <label asp-for="DivisionId" class="form-label">@Html.DisplayNameFor(m => m.DivisionId)</label>
-                    <span class="text-danger indicador-division" title="Campo obligatorio">*</span>
+                    @* <span class="text-danger indicador-division" title="Campo obligatorio">*</span> *@
                     <select asp-for="DivisionId"
                             asp-items="ViewBag.Divisiones"
                             class="form-control selectpicker"
@@ -325,10 +325,10 @@
                     }
                 });
 
-                if (!esEncargado && (!divisionSelect.val() || divisionSelect.val() === '')) {
-                    validacionFallida = true;
-                    if (!primerCampoVacio) primerCampoVacio = divisionSelect[0];
-                }
+                // if (!esEncargado && (!divisionSelect.val() || divisionSelect.val() === '')) {
+                //     validacionFallida = true;
+                //     if (!primerCampoVacio) primerCampoVacio = divisionSelect[0];
+                // }
 
                 if (validacionFallida) {
                     Swal.fire({

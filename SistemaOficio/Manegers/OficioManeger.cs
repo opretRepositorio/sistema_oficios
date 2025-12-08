@@ -27,8 +27,8 @@ namespace OfiGest.Managers
                 return (false, null, null);
 
             var usuario = await ObtenerUsuarioPorIdAsync(usuarioId);
-            if (usuario?.Departamento == null || (usuario.DivisionId == null && !usuario.EsEncargadoDepartamental))
-                return (false, null, null);
+            //if (usuario?.Departamento == null || (usuario.DivisionId == null && !usuario.EsEncargadoDepartamental))
+            //    return (false, null, null);
 
             string area = "TICS";
             string division = usuario.Division?.Iniciales ?? "00";
