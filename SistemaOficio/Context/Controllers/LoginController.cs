@@ -21,6 +21,8 @@ namespace OfiGest.Context.Controllers
         public IActionResult Index()
         {
 
+            
+
             return View(new LoginModel());
         }
 
@@ -64,6 +66,8 @@ namespace OfiGest.Context.Controllers
             HttpContext.Session.SetString("NombreDepartamento", usuario.Departamento.Nombre.ToString());
             HttpContext.Session.SetString("ImagenPerfil", usuario.ImagenPerfil ?? "/images/usuario.png");
             HttpContext.Session.SetString("EsEncargadoDepartamental", usuario.EsEncargadoDepartamental.ToString());
+
+
 
             // Mensaje de bienvenida
             TempData["PrimerAcceso"] = resultado.EsPrimerAcceso;

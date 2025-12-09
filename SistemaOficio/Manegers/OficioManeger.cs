@@ -30,12 +30,11 @@ namespace OfiGest.Managers
             //if (usuario?.Departamento == null || (usuario.DivisionId == null && !usuario.EsEncargadoDepartamental))
             //    return (false, null, null);
 
-            string area = "TICS";
             string division = usuario.Division?.Iniciales ?? "00";
-            string departamento = usuario.Departamento.Iniciales;
+            string departamento ="";
 
             var generador = new CodigoOficioGenerator(_context);
-            var (codigoGenerado, _) = await generador.GenerarYActualizarAsync(area, departamento, division);
+            var (codigoGenerado, _) = await generador.GenerarYActualizarAsync(departamento, division);
 
             if (await _context.Oficios.AnyAsync(o => o.Codigo == codigoGenerado))
                 return (false, null, null);
