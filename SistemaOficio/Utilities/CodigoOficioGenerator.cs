@@ -13,26 +13,25 @@ namespace OfiGest.Utilities
             _context = context;
         }
 
-        public async Task<(string Codigo, int Numero)> GenerarYActualizarAsync(string area, string departamento, string division)
+        public async Task<(string Codigo, int Numero)> GenerarYActualizarAsync( string departamento, string division)
         {
-            area = area.Trim().ToUpper();
             departamento = departamento.Trim().ToUpper();
             division = division.Trim().ToUpper();
 
             var contador = await _context.ContadorLocalOficio
-                .FirstOrDefaultAsync(c => c.Area == area && c.Departamento == departamento);
+                .FirstOrDefaultAsync(c =>   c.Departamento == departamento);
 
             int numeroActual = (contador?.UltimoNumero ?? 0) + 1;
             string secuencia = numeroActual.ToString("D4");
             string formatoFijo = "00";
             string fechaActual = DateTime.Now.ToString("yyyyMMdd");
-            string codigo = $"{area}{departamento}{division}{formatoFijo}{fechaActual}{secuencia}";
+            string codigo = $"{departamento}{division}{formatoFijo}{fechaActual}{secuencia}";
 
             if (contador == null)
             {
                 contador = new ContadorLocalOficio
                 {
-                    Area = area,
+                    Area = "",
                     Departamento = departamento,
                     Division = division,
                     UltimoNumero = numeroActual,
